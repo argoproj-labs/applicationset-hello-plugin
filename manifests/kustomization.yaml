@@ -1,5 +1,7 @@
 resources:
+  - applicationset-secret.yaml
   - configmap.yaml
   - deployment.yaml
   - namespace.yaml
+  - plugin-secret.yaml
   - service.yaml

@@ -4,5 +4,5 @@ metadata:
   name: applicationset-hello-plugin
   namespace: argocd
 data:
-  token: "supersecret"
-  baseUrl: "http://applicationset-hello-plugin.applicationset-hello-plugin.cluster.svc.local"
+  token: '$applicationset-hello-plugin:token'
+  baseUrl: "http://applicationset-hello-plugin.applicationset-hello-plugin.svc.cluster.local"

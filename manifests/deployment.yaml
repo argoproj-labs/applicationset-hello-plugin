@@ -24,6 +24,5 @@ spec:
               subPath: token
       volumes:
         - name: token
-          configMap:
-            name: applicationset-hello-plugin
-
+          secret:
+            secretName: applicationset-hello-plugin
