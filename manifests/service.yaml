@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: applicationset-hello-plugin
+  namespace: applicationset-hello-plugin
+spec:
+  selector:
+    app.kubernetes.io/name: applicationset-hello-plugin
+  ports:
+  - name: http
+    port: 80
+    targetPort: 4355

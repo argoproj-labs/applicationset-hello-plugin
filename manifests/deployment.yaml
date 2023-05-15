@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: applicationset-hello-plugin
+  namespace: applicationset-hello-plugin
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: applicationset-hello-plugin
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: applicationset-hello-plugin
+    spec:
+      containers:
+        - name: main
+          image: applicationset-hello-plugin:latest
+          ports:
+            - containerPort: 4355
+              name: http
+          volumeMounts:
+            - mountPath: /var/run/argo/token
+              name: token
+              subPath: token
+      volumes:
+        - name: token
+          configMap:
+            name: applicationset-hello-plugin
+
