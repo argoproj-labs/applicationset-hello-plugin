@@ -6,11 +6,11 @@ This is an example ApplicationSet plugin generator.
 
 First, install Argo CD on your cluster.
 
-Second, install the plugin's manifests. The manifests assume that Argo CD is installed in the `argocd` namespace and 
+Second, install the plugin's manifests. The manifests assume that Argo CD is installed in the `argocd` namespace and
 that you want to install the plugin Deployment in the `applicationset-hello-plugin` namespace.
 
 ```bash
-kubectly apply -k manifests
+kustomize build | kubectl apply -f -
 ```
 
 ```yaml
@@ -21,11 +21,11 @@ metadata:
 spec:
   generators:
     - plugin:
-        name: my-plugin
-        configMapRef: applicationset-hello-plugin
+        configMapRef:
+          name: applicationset-hello-plugin
   template:
     metadata:
-      name: 'from-appset-{{hello}}'
+      name: "from-appset-{{hello}}"
     spec:
       project: default
       source:
