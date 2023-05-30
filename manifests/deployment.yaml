@@ -14,7 +14,9 @@ spec:
     spec:
       containers:
         - name: main
-          image: applicationset-hello-plugin:latest
+          image: python:latest
+          command: ["python"]
+          args: ["/app/main.py"]
           ports:
             - containerPort: 4355
               name: http
@@ -22,7 +24,13 @@ spec:
             - mountPath: /var/run/argo/token
               name: token
               subPath: token
+            - name: hello-plugin-script
+              mountPath: "/app/main.py"
+              subPath: "main.py"
       volumes:
         - name: token
           secret:
             secretName: applicationset-hello-plugin
+        - name: hello-plugin-script
+          configMap:
+            name: hello-plugin-script

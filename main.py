@@ -30,15 +30,19 @@ class Plugin(BaseHTTPRequestHandler):
             return
 
         if self.path == '/api/v1/getparams.execute':
-            # args = self.args()
-            self.reply([
-                {
-                    "hello": "world",
-                },
-                {
-                    "hello": "again",
+            # args = self.args()['input']['parameters']
+            self.reply({
+                "output": {
+                    "parameters": [
+                        {
+                            "hello": "world",
+                        },
+                        {
+                            "hello": "again",
+                        }
+                    ]
                 }
-            ])
+            })
         else:
             self.unsupported()
 
