@@ -1,0 +1,13 @@
+resources:
+  - manifests/applicationset-secret.yaml
+  - manifests/configmap.yaml
+  - manifests/deployment.yaml
+  - manifests/namespace.yaml
+  - manifests/plugin-secret.yaml
+  - manifests/service.yaml
+
+configMapGenerator:
+  - name: hello-plugin-script
+    namespace: applicationset-hello-plugin
+    files:
+      - main.py=main.py
